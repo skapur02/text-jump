@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Jump</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+    
+    <h2>Part 1: Text Jump</h2>
+    <!-- input text on the left -->
+    <input type="text" id="leftBox" placeholder="Enter text here">
+    <!-- jump botton -->
+    <button id="jumpBtn">JUMP ></button>
+    <!-- input text on the right -->
+    <input type="text" id="rightBox" placeholder="" disabled>
+    
+    <script>
+        let isLeftToRight = true; // variable to track direction 
+
+        document.getElementById("jumpBtn").addEventListener("click", function() {
+            if (isLeftToRight) {
+                // move text from left to right 
+                document.getElementById("rightBox").value = document.getElementById("leftBox").value;
+                document.getElementById("leftBox").value = "";
+                this.textContent = "< JUMP"; // change button text 
+            } else {
+                // move text from right to left 
+                document.getElementById("leftBox").value = document.getElementById("rightBox").value;
+                document.getElementById("rightBox").value = "";
+                this.textContent = "JUMP >"; // change button text back 
+            }
+            isLeftToRight = !isLeftToRight; // switch movement direction 
+        });
+    </script>
+</body>
+</html>
